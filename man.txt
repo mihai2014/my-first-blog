@@ -1,0 +1,15 @@
+python3 -m venv myvenv
+source myvenv/bin/activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+
+django-admin startproject mysite
+------------------------------------------
+
+git init
+git config --global user.name "mihai2014"
+git config --global user.email mc200520052005@yahoo.com
+edit .gitignore
+git status
+git add --all .
+git commit -m "My Django Girls app, first commit"
