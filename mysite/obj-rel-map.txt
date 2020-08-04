@@ -1,0 +1,28 @@
+from blog.models import Post
+from django.contrib.auth.models import User
+
+admin = User.objects.all()[0]
+Post.objects.create(author=admin, title='Sample title', text='Test')
+
+me = User.objects.get(username='mihai')
+Post.objects.create(author=me, title='Day', text='Have a good day!')
+Post.objects.create(author=me, title='math', text='1+1=2')
+Post.objects.create(author=me, title='story', text='Once upon a time...')
+
+Post.objects.all()
+
+Post.objects.filter(author=me)
+
+from django.utils import timezone
+
+Post.objects.filter(published_date__lte=timezone.now())
+post = Post.objects.get(title="story")
+post.publish()
+Post.objects.filter(published_date__lte=timezone.now())
+
+Post.objects.filter(title__contains='title')
+Post.objects.order_by('created_date')
+Post.objects.order_by('-created_date')
+
+Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+
